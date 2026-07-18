@@ -366,6 +366,7 @@ def test_find_all_textures_includes_node_applied():
     path = NodePath("node")
     path.set_texture(tex)
     assert path.find_texture(TextureStage.get_default()) == tex
+    assert path.find_texture("tex") == tex
     found = path.find_all_textures()
     assert len(found) == 1
     assert found.get_num_textures() == 1
@@ -379,6 +380,7 @@ def test_find_all_materials_includes_node_applied():
     mat = Material("mat")
     path = NodePath("node")
     path.set_material(mat)
+    assert path.find_material("mat") == mat
     found = path.find_all_materials()
     assert found.get_num_materials() == 1
     assert found.get_material(0) == mat

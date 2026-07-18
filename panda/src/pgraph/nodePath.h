@@ -1020,7 +1020,10 @@ private:
   void r_find_all_textures(PandaNode *node, TextureStage *stage,
                            Textures &textures) const;
   static void r_replace_texture(PandaNode *node, Texture *tex, Texture *new_tex);
+
   static void collect_textures(const RenderState *state, Textures &textures);
+  static Texture *find_texture_match(const RenderState *state,
+                                     const GlobPattern &glob);
 
   typedef phash_set<TextureStage *, pointer_hash> TextureStages;
   TextureStage *r_find_texture_stage(PandaNode *node, const RenderState *state,
@@ -1037,7 +1040,10 @@ private:
                            Materials &materials) const;
   static void r_replace_material(PandaNode *node, Material *mat,
                                  const MaterialAttrib *new_attrib);
+
   static void collect_materials(const RenderState *state, Materials &materials);
+  static Material *find_material_match(const RenderState *state,
+                                       const GlobPattern &glob);
 
   PT(NodePathComponent) _head;
   int _backup_key;
